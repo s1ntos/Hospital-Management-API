@@ -2,6 +2,7 @@
 
 Este é um projeto de sistema hospitalar com uma **API RESTful em Spring Boot** e um **front-end simples em HTML + JavaScript**, criado com foco em aprendizado de arquitetura em camadas e integração com front-end.
 
+![status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ---
 
 ## 🎯 Objetivo
@@ -57,15 +58,14 @@ Este endpoint deverá retornar os **atendimentos** e **internações** associado
 ├── js/
 │ ├── api.js
 │ └── pacientes.js
-├──pages
-├──assets
+├── pages/
+├── assets/
 ---
 
 ## 📊 Diagrama de Classes
 ![Diagrama de Classes](docs/diagrama-classes.PNG)
 
-![status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 
 ## ✍️ Autor
-Desenvolvido por João Paulo como parte de um desafio prático para consolidar conhecimentos em Spring Boot e desenvolvimento web full-stack.
+Em desenvolvimento por João Paulo como parte de um desafio prático para consolidar conhecimentos em Spring Boot e desenvolvimento web full-stack.
 
