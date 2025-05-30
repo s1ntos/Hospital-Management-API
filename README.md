@@ -21,7 +21,7 @@ Permitir o cadastro e listagem de pacientes, e servir como base para desenvolvim
 
 ## 🚧 Desafio em andamento
 
-### resolver problemas na coneção do frontend com o backend:
+### resolver problemas na coneção do frontend com o backend
 ### Endpoint a ser desenvolvido:
 
 GET /api/pacientes/{id}/historico
