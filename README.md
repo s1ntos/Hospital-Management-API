@@ -50,6 +50,7 @@ Este endpoint deverá retornar os **atendimentos** e **internações** associado
 ## 🗂️ Estrutura do Projeto (Front-End)
 
  HOSPITALSYSTEMAPI/
+ ---
 ├── index.html
 ├── css/
 │ └── style.css
@@ -58,6 +59,7 @@ Este endpoint deverá retornar os **atendimentos** e **internações** associado
 │ └── pacientes.js
 ├──pages
 ├──assets
+---
 
 ## 📊 Diagrama de Classes
 ![Diagrama de Classes](docs/diagrama-classes.PNG)
