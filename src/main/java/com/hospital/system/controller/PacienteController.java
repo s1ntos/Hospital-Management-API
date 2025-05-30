@@ -1,16 +1,32 @@
 package com.hospital.system.controller;
 
-import com.hospital.system.repository.PacienteRepository;
+import com.hospital.system.model.Paciente;
+import com.hospital.system.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/paciente")
+@RequestMapping("/api/pacientes")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class PacienteController {
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private PacienteService pacienteService;
 
-    // TODO: Adicionar POST, GET, PUT e DELETE
+
+    @PostMapping
+    public ResponseEntity<Paciente> criarPaciente(@RequestBody Paciente paciente) {
+        Paciente salvo = pacienteService.salvarPaciente(paciente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
+    }
+
+    @GetMapping
+    public List<Paciente> listarPaciente() {
+        return pacienteService.listarPaciente();
+    }
 
 }

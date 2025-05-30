@@ -3,7 +3,7 @@ package com.hospital.system.model;
 import jakarta.persistence.*;
 
 @Entity
-public class PacienteModel {
+public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
