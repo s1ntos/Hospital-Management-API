@@ -1,9 +1,53 @@
 package com.hospital.system.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.hospital.system.model.Medico;
+import com.hospital.system.service.MedicoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/medicos")
 public class MedicoController {
+
+    @Autowired
+    private MedicoService medicoService;
+
+    @PostMapping
+    public ResponseEntity<Medico> criar(@RequestBody Medico medico){
+        Medico med = medicoService.salvarmedico(medico);
+        return ResponseEntity.status(HttpStatus.CREATED).body(med);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Medico>> listar(){
+        List<Medico> med = medicoService.listarmedico();
+        return ResponseEntity.ok(med);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Medico> buscarMedico(@PathVariable Long id) {
+        Medico buscar = medicoService.buscarmedicoporid(id);
+        if(buscar == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(buscar);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Medico> atualizar(@PathVariable Long id, @RequestBody Medico medico) {
+        Medico att = medicoService.atualizarmedico(id, medico);
+        if(att == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(att);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Medico> deletarmedico(@PathVariable Long id) {
+        boolean meddeleted = medicoService.deletarmedico(id);
+        return meddeleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }

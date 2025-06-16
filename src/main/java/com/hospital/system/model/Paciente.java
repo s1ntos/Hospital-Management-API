@@ -1,6 +1,9 @@
 package com.hospital.system.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 
 @Entity
 public class Paciente {
@@ -12,7 +15,9 @@ public class Paciente {
     private String nome;
     private String cpf;
     private String planoSaude;
-    private String dataNascimento;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataNascimento;
 
     public long getId() {
         return id;
@@ -46,11 +51,11 @@ public class Paciente {
         this.planoSaude = planoSaude;
     }
 
-    public String getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
