@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultas")
@@ -18,10 +19,15 @@ public class ConsultaController {
 
     @PostMapping("/agendar")
     public ResponseEntity<Consulta> agendar(@RequestBody AgendamentoConsultaDTO dto) {
-        LocalDateTime horario = LocalDateTime.parse(dto.dataHora);
-        Consulta consulta = consultaService.agendarConsulta(dto.medico, dto.paciente, horario);
+        LocalDateTime horario = LocalDateTime.parse(dto.getDataHora());
+        Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario);
         return ResponseEntity.ok(consulta);
     }
 
+    public ResponseEntity <List<Consulta>> listar() {
+        List<Consulta> consultas = consultaService.listarConsultas();
+        return ResponseEntity.ok(consultas);
+    }
 }
+
 

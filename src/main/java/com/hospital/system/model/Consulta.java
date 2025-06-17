@@ -3,7 +3,6 @@ package com.hospital.system.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-
 @Entity
 public class Consulta {
 
@@ -18,7 +17,6 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime dataHora;
-
 
     public long getId() {
         return id;
@@ -44,13 +42,13 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public LocalDateTime getDatahora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDatahora(LocalDateTime datahora) {
-        this.dataHora = datahora;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
-
 }
+
 
