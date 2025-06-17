@@ -24,10 +24,10 @@ Agendamento de consulta (POST /api/consultas/agendar)
 Usando AgendamentoConsultaDTO
 
 Valida se:
-  Médico e paciente existem
-  Horário não está no passado
-  Médico não tem outra consulta no mesmo horário
-  Listagem de todas as consultas (GET /api/consultas)
+- Médico e paciente existem
+- Horário não está no passado
+- Médico não tem outra consulta no mesmo horário
+- Listagem de todas as consultas (GET /api/consultas)
 ---
 
 ## 🚧 Desafio em andamento
