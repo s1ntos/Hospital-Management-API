@@ -1,5 +1,6 @@
 package com.hospital.system.controller;
 
+import com.hospital.system.dto.MedicoResponseDTO;
 import com.hospital.system.model.Medico;
 import com.hospital.system.service.MedicoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class MedicoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Medico>> listar(){
-        List<Medico> med = medicoService.listarmedico();
+    public ResponseEntity<List<MedicoResponseDTO>> listar(){
+        List<MedicoResponseDTO> med = medicoService.listarMedico();
         return ResponseEntity.ok(med);
     }
 

@@ -1,11 +1,14 @@
 package com.hospital.system.service;
 
+import com.hospital.system.dto.PacienteResponseDTO;
+import com.hospital.system.mapper.PacienteMapper;
 import com.hospital.system.model.Paciente;
 import com.hospital.system.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PacienteService {
@@ -17,11 +20,14 @@ public class PacienteService {
         return pacienteRepository.save(paciente);
     }
 
-    public List<Paciente> listarPaciente() {
-        return pacienteRepository.findAll();
+    public List<PacienteResponseDTO> listarPaciente() {
+        return pacienteRepository.findAll()
+                .stream()
+                .map(PacienteMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public Paciente buscarporid(long id) {
+    public Paciente buscarporid(Long id) {
         return pacienteRepository.findById(id).orElse(null);
     }
 
