@@ -52,14 +52,40 @@ Este endpoint deverá retornar os **atendimentos** e **internações** associado
 
  HOSPITALSYSTEMAPI/
 ```
-├── index.html
-├── css/
-│ └── style.css
-├── js/
-│ ├── api.js
-│ └── pacientes.js
-├── pages/
-├── assets/
+HOSPITAL-API/
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── hospital/
+│                   └── system/
+│                       ├── controller/
+│                       │   ├── ConsultaController.java
+│                       │   ├── MedicoController.java
+│                       │   └── PacienteController.java
+│                       ├── dto/
+│                       │   ├── AgendamentoConsultaDTO.java
+│                       │   ├── MedicoResponseDTO.java
+│                       │   └── PacienteResponseDTO.java
+│                       ├── exception/
+│                       │   └── RegraDeNegocioException.java
+│                       ├── mapper/
+│                       │   ├── MedicoMapper.java
+│                       │   └── PacienteMapper.java
+│                       ├── model/
+│                       │   ├── Consulta.java
+│                       │   ├── Medico.java
+│                       │   └── Paciente.java
+│                       ├── repository/
+│                       │   ├── ConsultaRepository.java
+│                       │   ├── MedicoRepository.java
+│                       │   └── PacienteRepository.java
+│                       ├── service/
+│                       │   ├── ConsultaService.java
+│                       │   ├── MedicoService.java
+│                       │   └── PacienteService.java
+│                       └── SystemApplication.java
+
 ```
 
 ## 📊 Diagrama de Classes
