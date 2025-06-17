@@ -28,6 +28,7 @@ public class ConsultaService {
 
         Medico medico = medicoRepository.findById(idMedico)
                 .orElseThrow(() -> new RegraDeNegocioException("Médico não encontrado"));
+
         Paciente paciente = pacienteRepository.findById(idPaciente)
                 .orElseThrow(() -> new RegraDeNegocioException("Paciente não encontrado"));
 
@@ -42,10 +43,10 @@ public class ConsultaService {
         Consulta consulta = new Consulta();
         consulta.setMedico(medico);
         consulta.setPaciente(paciente);
-        consulta.setDataHora(dataHora);
-        consulta.setStatus(com.hospital.system.model.StatusConsulta.AGENDADA);
+        consulta.setDatahora(dataHora);
 
         return consultaRepository.save(consulta);
     }
 }
+
 

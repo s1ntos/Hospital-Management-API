@@ -1,5 +1,6 @@
 package com.hospital.system.controller;
 
+import com.hospital.system.dto.AgendamentoConsultaDTO;
 import com.hospital.system.model.Consulta;
 import com.hospital.system.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,11 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     @PostMapping("/agendar")
-    public ResponseEntity<Consulta> agendar(@RequestParam Long idMedico,
-                                            @RequestParam Long idPaciente,
-                                            @RequestParam String dataHora) {
-        LocalDateTime horario = LocalDateTime.parse(dataHora); // formato ISO: "2025-06-17T14:00"
-        Consulta consulta = consultaService.agendarConsulta(idMedico, idPaciente, horario);
+    public ResponseEntity<Consulta> agendar(@RequestBody AgendamentoConsultaDTO dto) {
+        LocalDateTime horario = LocalDateTime.parse(dto.dataHora);
+        Consulta consulta = consultaService.agendarConsulta(dto.medico, dto.paciente, horario);
         return ResponseEntity.ok(consulta);
     }
+
 }
 
