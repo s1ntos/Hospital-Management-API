@@ -1,11 +1,14 @@
 package com.hospital.system.service;
 
+import com.hospital.system.dto.MedicoResponseDTO;
+import com.hospital.system.mapper.MedicoMapper;
 import com.hospital.system.model.Medico;
 import com.hospital.system.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MedicoService {
@@ -17,8 +20,11 @@ public class MedicoService {
         return medicoRepository.save(medico);
     }
 
-    public List<Medico> listarmedico() {
-        return medicoRepository.findAll();
+    public List<MedicoResponseDTO> listarMedico() {
+        return medicoRepository.findAll()
+                .stream()
+                .map(MedicoMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     public Medico buscarmedicoporid(Long id) {

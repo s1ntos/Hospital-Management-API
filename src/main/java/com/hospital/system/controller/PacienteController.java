@@ -1,7 +1,8 @@
 package com.hospital.system.controller;
 
+import com.hospital.system.dto.PacienteResponseDTO;
+import com.hospital.system.mapper.PacienteMapper;
 import com.hospital.system.model.Paciente;
-import com.hospital.system.repository.PacienteRepository;
 import com.hospital.system.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,9 +25,11 @@ public class PacienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
+
     @GetMapping
-    public List<Paciente> listarPaciente() {
-        return pacienteService.listarPaciente();
+    public ResponseEntity<List<PacienteResponseDTO>> listarPaciente() {
+        List<PacienteResponseDTO> pacientes = pacienteService.listarPaciente();
+        return ResponseEntity.ok(pacientes);
     }
 
     public ResponseEntity<Paciente> buscarPorId(@PathVariable Long id) {
