@@ -48,7 +48,7 @@ Este endpoint deverá retornar os **atendimentos** e **internações** associado
 - HTML5 + CSS3 + JavaScript
 - Live Server (VS Code)
 
-## 🗂️ Estrutura do Projeto (Front-End)
+## 🗂️ Estrutura do Projeto (BACKEND)
 
  HOSPITALSYSTEMAPI/
 ```
