@@ -18,6 +18,16 @@ Permitir o cadastro e listagem de pacientes, e servir como base para desenvolvim
 - Integração front-end ↔️ back-end usando `fetch API`
 - Arquitetura organizada (Controller → Service → Repository)
 
+📅 Consultas
+Agendamento de consulta (POST /api/consultas/agendar)
+
+Usando AgendamentoConsultaDTO
+
+Valida se:
+  Médico e paciente existem
+  Horário não está no passado
+  Médico não tem outra consulta no mesmo horário
+  Listagem de todas as consultas (GET /api/consultas)
 ---
 
 ## 🚧 Desafio em andamento
