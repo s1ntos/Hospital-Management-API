@@ -3,6 +3,7 @@ package com.hospital.system.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "funcionario")
 public class Funcionario {
 
     @Id
