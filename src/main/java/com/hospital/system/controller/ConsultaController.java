@@ -25,6 +25,7 @@ public class ConsultaController {
         return ResponseEntity.ok(consulta);
     }
 
+    @GetMapping
     public ResponseEntity <List<Consulta>> listar() {
         List<Consulta> consultas = consultaService.listarConsultas();
         return ResponseEntity.ok(consultas);
