@@ -2,6 +2,7 @@ package com.hospital.system.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -13,11 +14,17 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório!")
     private String nome;
+
+    @NotBlank(message = "CPF é obriigatório!")
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos numéricos")
     private String cpf;
+
+    @NotBlank(message = "Nome é obrigatorio!")
     private String planoSaude;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Data de nascimento deve estar no passado!")
     private LocalDate dataNascimento;
 
     public Long getId() {

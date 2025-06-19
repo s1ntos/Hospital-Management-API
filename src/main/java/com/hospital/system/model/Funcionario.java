@@ -1,6 +1,7 @@
 package com.hospital.system.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "funcionario")
@@ -10,9 +11,17 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório!")
     private String nome;
+
+    @NotBlank(message = "Cargo é obrigatório!")
     private String cargo;
+
+    @NotBlank(message = "Email é obrigatório!")
     private String email;
+
+    @NotNull(message = "Telefone é obrigatório")
+    @Positive(message = "O número de telefone deve ser positivo")
     private int telefone;
 
     public Long getId() {

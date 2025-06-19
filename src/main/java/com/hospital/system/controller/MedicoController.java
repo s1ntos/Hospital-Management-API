@@ -3,6 +3,7 @@ package com.hospital.system.controller;
 import com.hospital.system.dto.MedicoResponseDTO;
 import com.hospital.system.model.Medico;
 import com.hospital.system.service.MedicoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class MedicoController {
     private MedicoService medicoService;
 
     @PostMapping
-    public ResponseEntity<Medico> criar(@RequestBody Medico medico){
+    public ResponseEntity<Medico> criar(@RequestBody @Valid Medico medico){
         Medico med = medicoService.salvarmedico(medico);
         return ResponseEntity.status(HttpStatus.CREATED).body(med);
     }
@@ -30,7 +31,7 @@ public class MedicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Medico> buscarMedico(@PathVariable Long id) {
+    public ResponseEntity<Medico> buscarMedico(@PathVariable  Long id) {
         Medico buscar = medicoService.buscarmedicoporid(id);
         if(buscar == null) {
             return ResponseEntity.notFound().build();
@@ -39,7 +40,7 @@ public class MedicoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Medico> atualizar(@PathVariable Long id, @RequestBody Medico medico) {
+    public ResponseEntity<Medico> atualizar(@PathVariable  Long id, @RequestBody @Valid Medico medico) {
         Medico att = medicoService.atualizarmedico(id, medico);
         if(att == null) {
             return ResponseEntity.notFound().build();

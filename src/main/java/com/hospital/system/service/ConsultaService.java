@@ -33,9 +33,6 @@ public class ConsultaService {
         Paciente paciente = pacienteRepository.findById(idPaciente)
                 .orElseThrow(() -> new RegraDeNegocioException("Paciente não encontrado"));
 
-        if (dataHora.isBefore(LocalDateTime.now())) {
-            throw new RegraDeNegocioException("Não é possível agendar para o passado");
-        }
 
         if (consultaRepository.existsByMedicoAndDataHora(medico, dataHora)) {
             throw new RegraDeNegocioException("Este horário já está ocupado para o médico selecionado");

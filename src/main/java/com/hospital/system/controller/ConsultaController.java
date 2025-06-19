@@ -3,6 +3,7 @@ package com.hospital.system.controller;
 import com.hospital.system.dto.AgendamentoConsultaDTO;
 import com.hospital.system.model.Consulta;
 import com.hospital.system.service.ConsultaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class ConsultaController {
     private ConsultaService consultaService;
 
     @PostMapping("/agendar")
-    public ResponseEntity<Consulta> agendar(@RequestBody AgendamentoConsultaDTO dto) {
+    public ResponseEntity<Consulta> agendar(@RequestBody @Valid AgendamentoConsultaDTO dto) {
         LocalDateTime horario = LocalDateTime.parse(dto.getDataHora());
         Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario);
         return ResponseEntity.ok(consulta);

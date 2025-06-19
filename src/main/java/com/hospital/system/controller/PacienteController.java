@@ -4,6 +4,7 @@ import com.hospital.system.dto.PacienteResponseDTO;
 import com.hospital.system.mapper.PacienteMapper;
 import com.hospital.system.model.Paciente;
 import com.hospital.system.service.PacienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class PacienteController {
     private PacienteService pacienteService;
 
     @PostMapping
-    public ResponseEntity<Paciente> criarPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<Paciente> criarPaciente(@RequestBody @Valid Paciente paciente) {
         Paciente salvo = pacienteService.salvarPaciente(paciente);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
@@ -32,6 +33,7 @@ public class PacienteController {
         return ResponseEntity.ok(pacientes);
     }
 
+    @GetMapping("/{id}")
     public ResponseEntity<Paciente> buscarPorId(@PathVariable Long id) {
         Paciente paciente = pacienteService.buscarporid(id);
         if(paciente != null) {
@@ -40,6 +42,7 @@ public class PacienteController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping
     public ResponseEntity<Paciente> atualizarPaciente(@PathVariable Long id, Paciente paciente) {
         Paciente att = pacienteService.atualizar(id, paciente);
         if(att == null) {
@@ -48,6 +51,7 @@ public class PacienteController {
         return ResponseEntity.ok(att);
     }
 
+    @DeleteMapping
     public ResponseEntity<Paciente> deletarPaciente(@PathVariable long id) {
         boolean deletado = pacienteService.deletarpaciente(id);
         return deletado ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();

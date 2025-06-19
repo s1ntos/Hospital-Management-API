@@ -1,6 +1,7 @@
 package com.hospital.system.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "medico")
@@ -10,8 +11,14 @@ public class Medico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Nome é obrigatório ")
     private String nome;
+
+
+    @NotBlank(message = "crm é obrigatório")
     private String crm;
+
+    @NotBlank(message = "Especialidade é obrigatória")
     private String especialidade;
 
     public Long getId() {

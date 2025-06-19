@@ -1,6 +1,8 @@
 package com.hospital.system.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,12 +13,15 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
     @ManyToOne
     private Medico medico;
 
+    @NotNull
     @ManyToOne
     private Paciente paciente;
 
+    @FutureOrPresent(message = "A data deve estar no presente ou futuro")
     private LocalDateTime dataHora;
 
     public long getId() {
