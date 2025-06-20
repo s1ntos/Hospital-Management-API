@@ -24,6 +24,9 @@ public class Consulta {
     @FutureOrPresent(message = "A data deve estar no presente ou futuro")
     private LocalDateTime dataHora;
 
+    @NotNull(message = "A descrição é obrigatoria!")
+    private String descricao;
+
     public long getId() {
         return id;
     }
@@ -54,6 +57,14 @@ public class Consulta {
 
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
 

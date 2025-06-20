@@ -23,7 +23,7 @@ public class ConsultaController {
     @PostMapping("/agendar")
     public ResponseEntity<Consulta> agendar(@RequestBody @Valid AgendamentoConsultaDTO dto) {
         LocalDateTime horario = LocalDateTime.parse(dto.getDataHora());
-        Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario);
+        Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario, dto.getDescricao());
         return ResponseEntity.ok(consulta);
     }
 
