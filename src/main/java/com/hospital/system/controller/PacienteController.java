@@ -26,7 +26,6 @@ public class PacienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 
-
     @GetMapping
     public ResponseEntity<List<PacienteResponseDTO>> listarPaciente() {
         List<PacienteResponseDTO> pacientes = pacienteService.listarPaciente();
