@@ -2,6 +2,7 @@ package com.hospital.system.controller;
 
 import com.hospital.system.dto.AgendamentoConsultaDTO;
 import com.hospital.system.model.Consulta;
+import com.hospital.system.repository.ConsultaRepository;
 import com.hospital.system.service.ConsultaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,15 @@ public class ConsultaController {
     @GetMapping("/{id}")
     public ResponseEntity<Consulta> listarConsulta(@PathVariable Long id, @RequestBody Consulta consulta) {
         Consulta cons = consultaService.listarConsulta(id);
+        if(cons == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cons);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Consulta> atualizarConsulta(@PathVariable Long id, @RequestBody @Valid Consulta consulta) {
+        Consulta cons = consultaService.atualizarConsulta(id, consulta);
         if(cons == null) {
             return ResponseEntity.notFound().build();
         }
