@@ -31,6 +31,24 @@ public class ConsultaController {
         List<Consulta> consultas = consultaService.listarConsultas();
         return ResponseEntity.ok(consultas);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Consulta> listarConsulta(@PathVariable Long id, @RequestBody Consulta consulta) {
+        Consulta cons = consultaService.listarConsulta(id);
+        if(cons == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cons);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Consulta> deletarConsulta(@PathVariable Long id, @RequestBody Consulta consulta) {
+        boolean cons = consultaService.deletarConsulta(id);
+        return cons ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+
+    }
+
+
 }
 
 

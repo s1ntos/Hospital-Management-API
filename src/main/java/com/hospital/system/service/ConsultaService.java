@@ -49,6 +49,30 @@ public class ConsultaService {
     public List<Consulta> listarConsultas() {
         return consultaRepository.findAll();
     }
+
+    public Consulta listarConsulta(Long id) {
+        return consultaRepository.findById(id).orElse(null);
+    }
+
+    public Consulta atualizarConsulta(Long id, Consulta Consulta) {
+        Consulta consulta = listarConsulta(id);
+        if(consulta != null) {
+            consulta.setMedico(Consulta.getMedico());
+            consulta.setPaciente(Consulta.getPaciente());
+            consulta.setDataHora(Consulta.getDataHora());
+            return consultaRepository.save(consulta);
+        }
+        return null;
+    }
+
+    public boolean deletarConsulta(Long id) {
+        if(consultaRepository.existsById(id)) {
+            consultaRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }
 
 
