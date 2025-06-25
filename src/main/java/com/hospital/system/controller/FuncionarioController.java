@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Funcionarios")
-@CrossOrigin(origins = "http://127.0.0.1:5500/p1.html")
 public class FuncionarioController {
 
     @Autowired

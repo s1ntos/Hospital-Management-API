@@ -25,7 +25,7 @@ public class ConsultaService {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    public Consulta agendarConsulta(Long idMedico, Long idPaciente, LocalDateTime dataHora) {
+    public Consulta agendarConsulta(Long idMedico, Long idPaciente, LocalDateTime dataHora, String descricao) {
 
         Medico medico = medicoRepository.findById(idMedico)
                 .orElseThrow(() -> new RegraDeNegocioException("Médico não encontrado"));
@@ -42,6 +42,7 @@ public class ConsultaService {
         consulta.setMedico(medico);
         consulta.setPaciente(paciente);
         consulta.setDataHora(dataHora);
+        consulta.setDescricao(descricao);
 
         return consultaRepository.save(consulta);
     }
@@ -60,6 +61,7 @@ public class ConsultaService {
             consulta.setMedico(Consulta.getMedico());
             consulta.setPaciente(Consulta.getPaciente());
             consulta.setDataHora(Consulta.getDataHora());
+            consulta.setDescricao(consulta.getDescricao());
             return consultaRepository.save(consulta);
         }
         return null;

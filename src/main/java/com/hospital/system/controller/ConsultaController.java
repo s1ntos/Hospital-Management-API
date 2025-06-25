@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/consultas")
-@CrossOrigin(origins = "http://127.0.0.1:5500/p1.html")
 public class ConsultaController {
 
     @Autowired
@@ -23,7 +22,7 @@ public class ConsultaController {
     @PostMapping("/agendar")
     public ResponseEntity<Consulta> agendar(@RequestBody @Valid AgendamentoConsultaDTO dto) {
         LocalDateTime horario = LocalDateTime.parse(dto.getDataHora());
-        Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario);
+        Consulta consulta = consultaService.agendarConsulta(dto.getMedico(), dto.getPaciente(), horario, dto.getDescricao());
         return ResponseEntity.ok(consulta);
     }
 
