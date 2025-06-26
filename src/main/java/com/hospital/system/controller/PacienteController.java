@@ -41,7 +41,7 @@ public class PacienteController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Paciente> atualizarPaciente(@PathVariable Long id, Paciente paciente) {
         Paciente att = pacienteService.atualizar(id, paciente);
         if(att == null) {
@@ -50,7 +50,7 @@ public class PacienteController {
         return ResponseEntity.ok(att);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Paciente> deletarPaciente(@PathVariable long id) {
         boolean deletado = pacienteService.deletarpaciente(id);
         return deletado ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
