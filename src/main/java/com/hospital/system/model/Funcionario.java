@@ -20,9 +20,13 @@ public class Funcionario {
     @NotBlank(message = "Email é obrigatório!")
     private String email;
 
-    @NotNull(message = "Telefone é obrigatório")
-    @Positive(message = "O número de telefone deve ser positivo")
-    private int telefone;
+    @NotBlank(message = "Telefone é obrigatório")
+    @Pattern(regexp = "^\\(\\d{2}\\)\\s\\d{4,5}-\\d{4}$",
+            message = "Telefone deve estar no formato (99) 99999-9999"
+    )
+    private String telefone;
+
+    private String cpf;
 
     public Long getId() {
         return id;
@@ -56,11 +60,19 @@ public class Funcionario {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

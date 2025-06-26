@@ -32,6 +32,7 @@ public class FuncionarioService {
             f.setCargo(funcionario.getCargo());
             f.setEmail(funcionario.getEmail());
             f.setTelefone(funcionario.getTelefone());
+            f.setCpf(funcionario.getCpf());
             return funcionarioRepository.save(f);
         }
         return null;
